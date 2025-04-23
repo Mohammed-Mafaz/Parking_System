@@ -1,0 +1,8 @@
+opencv-python-headless
+numpy
+shapely
+ultralytics            # YOLOv8
+easyocr
+razorpay
+qrcode[pil]
+pymysql 
