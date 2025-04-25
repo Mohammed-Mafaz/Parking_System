@@ -1,4 +1,5 @@
 from ultralytics import YOLO
+import cv2
 
 model = YOLO("yolov8s.pt")  # or yolov8n/yolov8m as you need
 

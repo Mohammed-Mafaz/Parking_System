@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class ParkingRecord(models.Model):
     plate = models.CharField(max_length=20, db_index=True)
-    entry_time = models.DateTimeField()
+    entry_time = models.DateTimeField(default=timezone.now)
     section = models.CharField(max_length=50, blank=True, null=True)
     slot = models.CharField(max_length=20, blank=True, null=True)
     exit_time = models.DateTimeField(blank=True, null=True)
@@ -15,7 +15,8 @@ class ParkingRecord(models.Model):
         return (end - self.entry_time).total_seconds() / 60
 
     def amount_due(self, rate_per_hour=10):
-        mins = max(0, self.duration_minutes() - 5)  # free first 5 min
+        # mins = max(0, self.duration_minutes() - 5)  # free first 5 min
+        mins = self.duration_minutes()
         hours = (mins / 60)
         return round(hours * rate_per_hour, 2)
 

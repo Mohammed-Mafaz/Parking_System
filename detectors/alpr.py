@@ -1,5 +1,6 @@
 # detectors/alpr.py
 import easyocr
+import cv2
 reader = easyocr.Reader(["en"])  # you can add other langs
 
 def detect_and_read_plate(frame):
